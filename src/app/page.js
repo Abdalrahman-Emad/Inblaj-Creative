@@ -23,6 +23,7 @@ export default function InblajCreativePage() {
   const [dawnPhase, setDawnPhase] = useState("darkness") // darkness, firstLight, emergence, illuminated
   const [showContent, setShowContent] = useState(false)
   const [showElements, setShowElements] = useState(false)
+  const [showParticles, setShowParticles] = useState(false)
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -30,16 +31,18 @@ export default function InblajCreativePage() {
   })
 
   useEffect(() => {
-    const phase1 = setTimeout(() => setDawnPhase("firstLight"), 2000)
-    const phase2 = setTimeout(() => setDawnPhase("emergence"), 5000)
-    const phase3 = setTimeout(() => setDawnPhase("illuminated"), 11000)
-    const content1 = setTimeout(() => setShowContent(true), 10000)
-    const content2 = setTimeout(() => setShowElements(true), 11000)
+    const phase1 = setTimeout(() => setDawnPhase("firstLight"), 3000)
+    const phase2 = setTimeout(() => setDawnPhase("emergence"), 6000)
+    const phase3 = setTimeout(() => setDawnPhase("illuminated"), 15000)
+    const particles = setTimeout(() => setShowParticles(true), 8000)
+    const content1 = setTimeout(() => setShowContent(true), 12000)
+    const content2 = setTimeout(() => setShowElements(true), 13000)
 
     return () => {
       clearTimeout(phase1)
       clearTimeout(phase2)
       clearTimeout(phase3)
+      clearTimeout(particles)
       clearTimeout(content1)
       clearTimeout(content2)
     }
@@ -69,34 +72,44 @@ export default function InblajCreativePage() {
             : dawnPhase === "firstLight"
               ? "first-light"
               : dawnPhase === "emergence"
-                ? "dawn-emergence"
-                : "bg-gradient-to-br from-cyan-500 via-blue-400 to-sky-300"
+                ? "cinematic-dawn"
+                : "bg-gradient-to-br from-facc15 via-f9fafb to-ffffff"
         }`}
       />
 
-      {dawnPhase === "emergence" && <div className="fixed inset-0 z-10 radial-light-spread pointer-events-none" />}
+      {(dawnPhase === "emergence" || dawnPhase === "illuminated") && (
+        <div className="fixed inset-0 z-10 horizon-glow pointer-events-none" />
+      )}
 
-      {dawnPhase === "emergence" && (
+      {(dawnPhase === "emergence" || dawnPhase === "illuminated") && (
         <div className="fixed inset-0 z-20 pointer-events-none">
-          <div className="absolute top-0 left-0 w-40 h-full bg-gradient-to-r from-transparent via-cyan-300/40 to-transparent transform -rotate-45 sunlight-pierce" />
-          <div
-            className="absolute top-0 left-1/4 w-32 h-full bg-gradient-to-r from-transparent via-blue-300/30 to-transparent transform -rotate-45 sunlight-pierce"
-            style={{ animationDelay: "6.5s" }}
-          />
-          <div
-            className="absolute top-0 right-1/4 w-36 h-full bg-gradient-to-r from-transparent via-purple-300/35 to-transparent transform -rotate-45 sunlight-pierce"
-            style={{ animationDelay: "7s" }}
-          />
-          <div
-            className="absolute top-0 right-0 w-28 h-full bg-gradient-to-r from-transparent via-sky-300/25 to-transparent transform -rotate-45 sunlight-pierce"
-            style={{ animationDelay: "7.5s" }}
-          />
+          <div className="absolute top-0 left-0 w-48 h-full aurora-rays" style={{ animationDelay: "6s" }} />
+          <div className="absolute top-0 left-1/4 w-40 h-full aurora-rays" style={{ animationDelay: "6.8s" }} />
+          <div className="absolute top-0 left-2/4 w-44 h-full aurora-rays" style={{ animationDelay: "7.6s" }} />
+          <div className="absolute top-0 right-1/4 w-36 h-full aurora-rays" style={{ animationDelay: "8.4s" }} />
+          <div className="absolute top-0 right-0 w-32 h-full aurora-rays" style={{ animationDelay: "9.2s" }} />
         </div>
       )}
 
-      <nav className={`relative z-50 p-6 transition-all duration-1000 ${showElements ? "opacity-100" : "opacity-0"}`}>
+      {showParticles && (
+        <div className="fixed inset-0 z-15 pointer-events-none">
+          {[...Array(12)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-1 h-1 bg-facc15/30 rounded-full particle-float"
+              style={{
+                left: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 20}s`,
+                animationDuration: `${15 + Math.random() * 10}s`,
+              }}
+            />
+          ))}
+        </div>
+      )}
+
+      <nav className={`relative z-50 p-6 transition-all duration-1500 ${showElements ? "opacity-100" : "opacity-0"}`}>
         <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <div className="text-2xl font-heading font-bold text-white hover:scale-105 transition-transform duration-300 content-illuminate">
+          <div className="text-2xl font-heading font-bold text-white hover:scale-105 transition-transform duration-300 content-emerge">
             Inblaj <span className="text-shimmer">Creative</span>
           </div>
           <div className="hidden md:flex space-x-8">
@@ -104,7 +117,7 @@ export default function InblajCreativePage() {
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className={`text-white/80 hover:text-white transition-all duration-300 hover:scale-110 bounce-gentle content-illuminate reveal-delay-${index + 1}`}
+                className={`text-white/80 hover:text-white transition-all duration-300 hover:scale-110 bounce-gentle content-emerge reveal-delay-${index + 1}`}
               >
                 {item}
               </a>
@@ -116,23 +129,23 @@ export default function InblajCreativePage() {
       <section className="relative z-40 min-h-screen flex items-center justify-center px-6">
         <div className="max-w-4xl mx-auto text-center">
           <div
-            className={`transition-all duration-2000 ${showContent ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"} content-illuminate`}
+            className={`transition-all duration-2000 ${showContent ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"} content-emerge`}
           >
-            <h1 className="text-5xl md:text-7xl font-heading font-bold text-white mb-6 leading-tight float">
+            <h1 className="text-5xl md:text-7xl font-heading font-bold text-white mb-6 leading-tight float text-illuminate">
               Where Light Emerges
               <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400 text-shimmer">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-facc15 to-f9fafb text-shimmer">
                 From Darkness
               </span>
             </h1>
             <p
-              className={`text-xl md:text-2xl text-white/80 mb-8 max-w-2xl mx-auto leading-relaxed transition-all duration-1000 content-illuminate reveal-delay-1 ${showElements ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+              className={`text-xl md:text-2xl text-white/80 mb-8 max-w-2xl mx-auto leading-relaxed transition-all duration-1000 content-emerge reveal-delay-2 ${showElements ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
             >
               We illuminate your brand's potential with creative digital solutions that transform ideas into
               extraordinary experiences.
             </p>
             <div
-              className={`flex flex-col sm:flex-row gap-4 justify-center transition-all duration-1000 content-illuminate reveal-delay-2 ${showElements ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+              className={`flex flex-col sm:flex-row gap-4 justify-center transition-all duration-1000 content-emerge reveal-delay-3 ${showElements ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
             >
               <Button
                 size="lg"
@@ -152,7 +165,7 @@ export default function InblajCreativePage() {
         </div>
 
         <div
-          className={`absolute bottom-8 left-1/2 transform -translate-x-1/2 transition-all duration-1000 content-illuminate reveal-delay-3 ${showElements ? "opacity-100" : "opacity-0"}`}
+          className={`absolute bottom-8 left-1/2 transform -translate-x-1/2 transition-all duration-1000 content-emerge reveal-delay-4 ${showElements ? "opacity-100" : "opacity-0"}`}
         >
           <ChevronDown className="h-6 w-6 text-white/60 bounce-gentle" />
         </div>
@@ -161,7 +174,7 @@ export default function InblajCreativePage() {
       <section id="services" className="relative z-40 py-20 px-6">
         <div className="max-w-6xl mx-auto">
           <div
-            className={`text-center mb-16 transition-all duration-1000 content-illuminate reveal-delay-4 ${showElements ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+            className={`text-center mb-16 transition-all duration-1000 content-emerge reveal-delay-4 ${showElements ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
           >
             <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-6 float">
               Our Creative <span className="text-shimmer">Services</span>
@@ -212,7 +225,7 @@ export default function InblajCreativePage() {
             ].map((service, index) => (
               <Card
                 key={index}
-                className={`bg-card/10 backdrop-blur-sm border-white/20 hover:bg-card/20 transition-all duration-500 hover-lift scale-in content-illuminate reveal-delay-${index + 5} ${showElements ? "opacity-100" : "opacity-0"}`}
+                className={`bg-card/10 backdrop-blur-sm border-white/20 hover:bg-card/20 transition-all duration-500 hover-lift scale-in content-emerge reveal-delay-${index + 5} ${showElements ? "opacity-100" : "opacity-0"}`}
               >
                 <CardContent className="p-6">
                   <div className="text-cyan-400 mb-4 float animate-delay-1">{service.icon}</div>
@@ -311,10 +324,10 @@ export default function InblajCreativePage() {
           <div
             className={`transition-all duration-1000 ${showContent ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
           >
-            <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-6 float">
+            <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-6 leading-tight float">
               Ready to Illuminate Your
               <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400 text-shimmer">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-facc15 to-f9fafb text-shimmer">
                 Digital Presence?
               </span>
             </h2>

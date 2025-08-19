@@ -1,6 +1,5 @@
 import { Space_Grotesk, DM_Sans } from "next/font/google"
 import "./globals.css"
-import "./theme.css"
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
