@@ -138,12 +138,12 @@ export default function InblajCreativePage() {
                 From Darkness
               </span>
             </h1>
-            <p
-              className={`text-xl md:text-2xl text-white/80 mb-8 max-w-2xl mx-auto leading-relaxed transition-all duration-1000 content-emerge reveal-delay-2 ${showElements ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-            >
-              We illuminate your brand's potential with creative digital solutions that transform ideas into
-              extraordinary experiences.
-            </p>
+<p
+  className={`text-xl md:text-2xl text-white/80 mb-8 max-w-2xl mx-auto leading-relaxed transition-all duration-1000 content-emerge reveal-delay-2 ${showElements ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+>
+  We illuminate your brand&apos;s potential with creative digital solutions that transform ideas into
+  extraordinary experiences.
+</p>
             <div
               className={`flex flex-col sm:flex-row gap-4 justify-center transition-all duration-1000 content-emerge reveal-delay-3 ${showElements ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
             >
@@ -243,12 +243,12 @@ export default function InblajCreativePage() {
           <div
             className={`text-center mb-16 transition-all duration-1000 ${showContent ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
           >
-            <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-6 float">
-              Let's Create Something <span className="text-shimmer">Amazing</span>
-            </h2>
-            <p className="text-xl text-white/70 max-w-2xl mx-auto">
-              Ready to bring your vision to life? Get in touch and let's start the conversation.
-            </p>
+<h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-6 float">
+  Let&apos;s Create Something <span className="text-shimmer">Amazing</span>
+</h2>
+<p className="text-xl text-white/70 max-w-2xl mx-auto">
+  Ready to bring your vision to life? Get in touch and let&apos;s start the conversation.
+</p>
           </div>
 
           <Card
@@ -331,9 +331,9 @@ export default function InblajCreativePage() {
                 Digital Presence?
               </span>
             </h2>
-            <p className="text-xl text-white/70 mb-8 max-w-2xl mx-auto">
-              Let's collaborate to bring your vision to life. Every great project begins with a conversation.
-            </p>
+<p className="text-xl text-white/70 mb-8 max-w-2xl mx-auto">
+  Let&apos;s collaborate to bring your vision to life. Every great project begins with a conversation.
+</p>
             <Button
               size="lg"
               className="bg-primary hover:bg-primary/90 text-primary-foreground glow-pulse hover-glow font-medium px-8 py-4 text-lg transition-all duration-300"
@@ -355,10 +355,10 @@ export default function InblajCreativePage() {
               <div className="text-2xl font-heading font-bold text-white mb-4 hover:scale-105 transition-transform duration-300">
                 Inblaj <span className="text-shimmer">Creative</span>
               </div>
-              <p className="text-white/60 mb-4 max-w-md">
-                Where light emerges from darkness. We're a digital agency passionate about creating extraordinary
-                experiences.
-              </p>
+<p className="text-white/60 mb-4 max-w-md">
+  Where light emerges from darkness. We&apos;re a digital agency passionate about creating extraordinary
+  experiences.
+</p>
             </div>
             <div>
               <h4 className="font-heading font-semibold text-white mb-4">Services</h4>
