@@ -1,0 +1,447 @@
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Updated color tokens for Inblaj Creative dawn theme */
+  --background: #0f172a; /* Deep night background */
+  --foreground: #ffffff; /* Pure white text */
+  --card: #1e293b; /* Dark card background */
+  --card-foreground: #e2e8f0; /* Light card text */
+  --popover: #1e293b; /* Dark popover background */
+  --popover-foreground: #ffffff; /* White popover text */
+  --primary: #6366f1; /* Vibrant purple for CTAs */
+  --primary-foreground: #ffffff; /* White text on primary */
+  --secondary: #475569; /* Muted slate */
+  --secondary-foreground: #e2e8f0; /* Light text on secondary */
+  --muted: #334155; /* Muted background */
+  --muted-foreground: #94a3b8; /* Muted text */
+  --accent: #0ea5e9; /* Cyan accent for highlights */
+  --accent-foreground: #ffffff; /* White text on accent */
+  --destructive: #ef4444; /* Red for errors */
+  --destructive-foreground: #ffffff; /* White text on destructive */
+  --border: rgba(148, 163, 184, 0.2); /* Subtle borders */
+  --input: #1e293b; /* Dark input background */
+  --ring: rgba(99, 102, 241, 0.5); /* Purple focus ring */
+  --chart-1: #6366f1;
+  --chart-2: #0ea5e9;
+  --chart-3: #10b981;
+  --chart-4: #f59e0b;
+  --chart-5: #ef4444;
+  --radius: 0.75rem; /* Slightly more rounded */
+  --sidebar: #1e293b;
+  --sidebar-foreground: #e2e8f0;
+  --sidebar-primary: #6366f1;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #0ea5e9;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: rgba(148, 163, 184, 0.2);
+  --sidebar-ring: rgba(99, 102, 241, 0.7);
+
+  /* Added custom dawn animation variables */
+  --dawn-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0ea5e9 100%);
+  --light-ray: linear-gradient(90deg, transparent 0%, rgba(14, 165, 233, 0.3) 50%, transparent 100%);
+}
+
+.dark {
+  --background: #0f172a;
+  --foreground: #ffffff;
+  --card: #1e293b;
+  --card-foreground: #e2e8f0;
+  --popover: #1e293b;
+  --popover-foreground: #ffffff;
+  --primary: #6366f1;
+  --primary-foreground: #ffffff;
+  --secondary: #475569;
+  --secondary-foreground: #e2e8f0;
+  --muted: #334155;
+  --muted-foreground: #94a3b8;
+  --accent: #0ea5e9;
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: rgba(148, 163, 184, 0.2);
+  --input: #1e293b;
+  --ring: rgba(99, 102, 241, 0.5);
+  --chart-1: #6366f1;
+  --chart-2: #0ea5e9;
+  --chart-3: #10b981;
+  --chart-4: #f59e0b;
+  --chart-5: #ef4444;
+  --sidebar: #1e293b;
+  --sidebar-foreground: #e2e8f0;
+  --sidebar-primary: #6366f1;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #0ea5e9;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: rgba(148, 163, 184, 0.2);
+  --sidebar-ring: rgba(99, 102, 241, 0.7);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Enhanced animation keyframes for smoother, more noticeable transitions */
+@keyframes dawn-break {
+  0% {
+    background: #0f172a;
+    opacity: 0;
+  }
+  25% {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    opacity: 0.3;
+  }
+  50% {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #0ea5e9 100%);
+    opacity: 0.6;
+  }
+  75% {
+    background: linear-gradient(135deg, #334155 0%, #0ea5e9 50%, #38bdf8 100%);
+    opacity: 0.8;
+  }
+  100% {
+    background: linear-gradient(135deg, #0ea5e9 0%, #38bdf8 50%, #e0f2fe 100%);
+    opacity: 1;
+  }
+}
+
+@keyframes light-ray {
+  0% {
+    transform: translateX(-100%) rotate(-45deg);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100vw) rotate(-45deg);
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(99, 102, 241, 0.6);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes scale-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes bounce-gentle {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Enhanced multi-stage dawn animation with more dramatic phases */
+@keyframes complete-darkness {
+  0%,
+  100% {
+    background: #000000;
+    opacity: 1;
+  }
+}
+
+@keyframes first-light {
+  0% {
+    background: #000000;
+    opacity: 0;
+  }
+  100% {
+    background: linear-gradient(135deg, #000000 0%, #0f172a 100%);
+    opacity: 1;
+  }
+}
+
+@keyframes dawn-emergence {
+  0% {
+    background: linear-gradient(135deg, #000000 0%, #0f172a 100%);
+  }
+  25% {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 80%, #334155 100%);
+  }
+  50% {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 40%, #475569 70%, #0ea5e9 100%);
+  }
+  75% {
+    background: linear-gradient(135deg, #334155 0%, #475569 30%, #0ea5e9 60%, #38bdf8 100%);
+  }
+  100% {
+    background: linear-gradient(135deg, #0ea5e9 0%, #38bdf8 40%, #7dd3fc 70%, #e0f2fe 100%);
+  }
+}
+
+@keyframes sunlight-pierce {
+  0% {
+    transform: translateX(-200%) rotate(-45deg) scale(0.5);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.3;
+    transform: translateX(-150%) rotate(-45deg) scale(0.7);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(0%) rotate(-45deg) scale(1);
+  }
+  80% {
+    opacity: 0.8;
+    transform: translateX(150%) rotate(-45deg) scale(1.2);
+  }
+  100% {
+    transform: translateX(200%) rotate(-45deg) scale(1.5);
+    opacity: 0;
+  }
+}
+
+@keyframes content-illuminate {
+  0% {
+    opacity: 0;
+    transform: translateY(60px) scale(0.8);
+    filter: blur(10px);
+  }
+  30% {
+    opacity: 0.3;
+    transform: translateY(40px) scale(0.9);
+    filter: blur(5px);
+  }
+  60% {
+    opacity: 0.7;
+    transform: translateY(20px) scale(0.95);
+    filter: blur(2px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0px);
+  }
+}
+
+@keyframes radial-light-spread {
+  0% {
+    background: radial-gradient(circle at center, transparent 0%, transparent 100%);
+  }
+  25% {
+    background: radial-gradient(circle at center, rgba(14, 165, 233, 0.1) 0%, transparent 20%);
+  }
+  50% {
+    background: radial-gradient(
+      circle at center,
+      rgba(14, 165, 233, 0.2) 0%,
+      rgba(14, 165, 233, 0.1) 40%,
+      transparent 60%
+    );
+  }
+  75% {
+    background: radial-gradient(
+      circle at center,
+      rgba(14, 165, 233, 0.3) 0%,
+      rgba(14, 165, 233, 0.2) 50%,
+      rgba(14, 165, 233, 0.1) 80%,
+      transparent 100%
+    );
+  }
+  100% {
+    background: radial-gradient(
+      circle at center,
+      rgba(14, 165, 233, 0.4) 0%,
+      rgba(14, 165, 233, 0.3) 60%,
+      rgba(14, 165, 233, 0.2) 90%,
+      transparent 100%
+    );
+  }
+}
+
+.dawn-animation {
+  animation: dawn-break 5s ease-in-out forwards;
+}
+
+.light-ray {
+  animation: light-ray 4s ease-in-out 1s forwards;
+}
+
+.fade-in-up {
+  animation: fade-in-up 1s ease-out forwards;
+}
+
+.glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+.float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.scale-in {
+  animation: scale-in 0.6s ease-out forwards;
+}
+
+.shimmer {
+  background: linear-gradient(90deg, #ffffff, #0ea5e9, #ffffff);
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+/* Animation classes for the new cinematic sequence */
+.complete-darkness {
+  animation: complete-darkness 2s ease-in-out forwards;
+}
+
+.first-light {
+  animation: first-light 3s ease-in-out 2s forwards;
+}
+
+.dawn-emergence {
+  animation: dawn-emergence 6s ease-in-out 5s forwards;
+}
+
+.sunlight-pierce {
+  animation: sunlight-pierce 5s ease-in-out 6s forwards;
+}
+
+.content-illuminate {
+  animation: content-illuminate 2s ease-out 10s forwards;
+}
+
+.radial-light-spread {
+  animation: radial-light-spread 4s ease-in-out 7s forwards;
+}
+
+/* Enhanced staggered content reveal delays */
+.reveal-delay-1 {
+  animation-delay: 11s;
+}
+.reveal-delay-2 {
+  animation-delay: 11.5s;
+}
+.reveal-delay-3 {
+  animation-delay: 12s;
+}
+.reveal-delay-4 {
+  animation-delay: 12.5s;
+}
+.reveal-delay-5 {
+  animation-delay: 13s;
+}
+.reveal-delay-6 {
+  animation-delay: 13.5s;
+}
+
+/* Enhanced hover effects for interactive elements */
+.hover-lift {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 30px rgba(99, 102, 241, 0.4);
+  transform: scale(1.02);
+}
+
+.text-shimmer {
+  background: linear-gradient(90deg, #ffffff, #0ea5e9, #ffffff);
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s ease-in-out infinite;
+}
